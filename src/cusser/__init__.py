@@ -43,9 +43,9 @@ class Cusser:
     """A curses wrapper that understands ANSI escape code sequences."""
 
     window: curses._CursesWindow
-    color_manager: ColorManager = ColorManager(
+    color_manager: ColorManager = field(default_factory=lambda: ColorManager(
         on_add_color=on_add_color, on_add_pair=on_add_pair
-    )
+    ))
 
     _ON_ATTR_MAP = {
         Attribute.BOLD: curses.A_BOLD,
